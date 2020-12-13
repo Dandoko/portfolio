@@ -1,20 +1,40 @@
+.bio-photo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4rem 0;
+}
+
+.bio-photo-container img {
+    width: 32vh;
+    max-width: 300px;
+    min-width: 200px;
+    height: auto;
+    border: 4px solid white;
+    border-radius: 20px;
+}
+
 .bio-container {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 .bio-text {
     margin-top: 2rem;
-    font-size: 20px;
+    font-size: 22px;
+}
+
+.ensightful-link {
+    color: #e5aef5;
+}
+
+.ensightful-link:hover {
+    color: #e5aef5;
 }
 
 .icon-container {
     margin-top: 2.5rem;
 }
 
-.icon-col {
-    padding-right: 1.5rem;
-}
-
 i {
-    font-size: 30px;
+    font-size: 35px;
 }

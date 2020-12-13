@@ -13,7 +13,7 @@ body {
 }
 
 section {
-    width: 600px;
+    width: 700px;
     max-width: 80vw;
     display: flex;
     flex-direction: column;
@@ -26,4 +26,17 @@ a {
 
 a:hover {
     color: inherit;
+}
+
+.navbar-container {
+    margin-top: 4rem;
+    padding: 0 5rem;
+}
+
+.col-sm {
+    margin-bottom: 0.5rem;
+}
+
+.nav-text {
+    font-size: 25px;
 }

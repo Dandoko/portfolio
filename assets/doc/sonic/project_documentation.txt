@@ -1,0 +1,699 @@
+﻿                       ================================
+                       2D Project Documentation - Sonic
+                       ================================
+
+===================
+Project Description
+===================
+This project, Sonic, is a recreation of the 1991, Sonic the Hedgehog Sega
+Genesis with an additional server and Android implementation. The purpose of
+the project is for portfolio display and to learn 2D game development, server
+and client programming, Android development, and Java OOP. This project was
+created on the Windows 10, version 1909 operating system. 
+
+=====
+Staff
+=====
+Lead Programmer: Samil Chai
+Junior Programmer: Daniel Ko
+
+=========
+Copyright
+=========
+Code: Samil Chai
+Music and Sound Effects: SEGA
+Sprites: Mugen Archive and Spriters Resource
+Map Background: Sonic Galaxy
+	
+==============================================
+User’s Guide - What to Install Inorder to Play
+==============================================
+
+(1) Client
+
+In order to play the game, the user will need to download the Java Development
+Kit (JDK) and an Integrated Development Environment (IDE) that can run Java.
+For the project, Eclipse and Android Studio were the IDEs of the choice.
+
+(2) Server
+
+To run server features of the project, a database management system and a Java
+Servlet will be required. MySQL was used to manage the database and Apache
+Tomcat was the implementation of the Java Servlet. To send information between
+the server and the client, Gson was employed to serialize and deserialize Java
+objects to the string format, JSON. 
+
+==========================
+User’s Guide - How to Play
+==========================
+
+(1) Client
+
+(1.1) Controls
+
+Once launching the game, the user can control Sonic’s movements through basic
+keyboard keys. These controls are as follows: ‘w’-forward, ‘a’-backward,
+‘spacebar’-jump, ‘f’-spin ball. If the user would like to pause the game and
+access the game menu, the ‘escape’ key can be pressed at any time. Within the
+game, the controls menu can be accessed which will display all the keyboard
+functionalities. A mouse will also be necessary to click on the buttons when on
+a menu.
+
+(1.2) Props
+
+Throughout the game, Sonic will encounter props that will assist the
+completion of a level. The checkpoint will save Sonic’s progress through the
+level. The spring will launch Sonic upwards if Sonic jumps onto one. Rings can
+be collected to receive bonus points at the end of the level. 
+
+(1.3) Enemies
+
+On the other hand, Sonic will be met with obstacles attempting to seize Sonic’s
+success. If Sonic hits a spike, Sonic will lose a fixed number of rings but
+will be given a limited time of invincibility to move away to safety. Another
+obstacle Sonic will have to face are Badniks which are the mobs. For each
+Badnik killed, Sonic will gain 100 points. To kill a Badnik, Sonic must either
+jump and hit them or be in the spin ball form. If Sonic hits a Badnik without
+meeting either of two conditions just mentioned, Sonic will take damage. 
+
+(1.4) Life System
+
+Once Sonic has 0 rings and takes more damage, Sonic will lose a life. If Sonic
+has 0 lives left, the game will be over. The player can continue the game, and
+Sonic will respawn at the last checkpoint. If no checkpoints have been reached,
+Sonic will respawn at the beginning of the game. Sonic’s score will be reset to
+0 when he respawns.
+
+(1.5) Items
+
+There are 3 unique items in the game. The first is a teleportation pearl which
+will teleport the player to a random location when used. The second is a life
+mushroom. Using the mushroom will give Sonic an extra life. The last item
+is a speed potion. As the name suggests, the item will grant Sonic additional
+movement speed for a limited time. All three of these items can be purchased
+from the shop.
+
+(2) Server
+
+(2.1) Computer
+
+(2.1.1) Login
+
+In order to log into the game, a correct user ID and password will have to be
+inputted to the login panel. A list of viable user IDs and corresponding
+passwords will be presented on a web page loaded by running the
+SonicServer.java file. After logging in, the game will commence.
+
+(2.1.2) Chat
+
+During the game, the user can access the chat panel to communicate with other
+players on the same server. Press the ‘c’ key to bring up the chat panel. At
+the bottom of the chat panel, the user can type a message into the empty
+message field. To send the message, either press ‘enter’ on the keyboard or
+click ‘Send’ on the panel. To return to the game, click anywhere outside of
+the panel with a mouse and press the ‘c’ key once more.
+
+(2.1.3) Inventory
+
+To open and close the inventory panel, press the ‘i’ key. The inventory will
+not be of any use until the player stores an item into it. If empty, the player
+will only be able to drag the inventory panel around with a mouse. Once an
+item is stored in the inventory, the player will be able to move the item and
+place it into different slots as long as the player is viewing the inventory
+panel. If the player wants to use an item, click on the desired item and then
+click on the “Use” button.
+
+(2.1.4) Shop
+
+To open and close the shop panel, press the ‘o’ key. The shop will begin with a
+selection of three random items. If the shop panel is opened, the player will
+be able to click onto a slot that consists of an item. If an item has been
+selected, the item will blink to signify that the item has been chosen. Once
+chosen, the player can buy the item by pressing on the buy button. The price of
+the item will be listed below the image of the item. The player will not be able
+to buy the item of choice if Sonic does not have enough rings for it. If the
+player has a full inventory and attempts to buy another item, the player will
+have to remove an item from the inventory. As a note, every user has access to
+the same shop. Therefore, if a user buys an item, the item will be removed from
+the shop for all players. 
+
+(2.1.5) Multiplayer
+
+When multiple people log in to the game through the same server, they will
+appear on the same map with name tags above their character. Their movements,
+positions, and animations will be shown to the other players.
+
+(2.1.6) Ghost Recon
+
+Often in multiplayer video games, a connection issue will occur, causing
+packets containing player data to be lost. During this phase, the player who
+lost connection will be stuck in the last frame. When the connection is
+reestablished, the player will either appear to stutter to the correct position
+or simply teleport. To solve this issue, I applied what my mentor, Samil Chai,
+likes to call Ghost Recon. Ghost Recon will adjust to packet loss by applying
+basic predictions of future movements of a player and recover the player’s
+location without teleporting when it is not in the correct position.
+
+To apply Ghost Recon, the user can press the “q” key. To see the Ghost Recon in
+action, lag will be required. To apply lag to the localhost, an artificial lag
+producer was created. Pressing the “l” key will apply artificial lag on the
+player by intentionally sending packets containing player information late.
+
+(2.2) Android
+
+The purpose of the Android client implementation is to supplement the server
+features. Different Android features can be navigated to through the navbar
+located at the bottom of the app.
+
+(2.2.1) Login
+
+The login process is exactly the same as the computer’s login, and the pool of
+viable user IDs and passwords is the same. Once logged in, other features of
+the app will be made available.
+
+
+(2.2.2) Shop
+The shop will display the same items as the computer’s shop panel. The system
+to buy is different, however. If the user would like to purchase an item,
+press the item slot to be taken to a new screen. This screen will allow the
+user to add the shop item to the user’s shopping cart. If added, the item will
+be removed from the shop.
+
+(2.2.3) Shopping Cart
+The shopping cart can hold a maximum of 3 items. In order to buy the items in
+the shopping cart, all of the items must be bought at once. Thus, if the user
+does not have enough rings for all the items or not enough space in the
+inventory, the user will not be able to buy the items in the shopping cart.
+
+=================================
+Programmer's Guide - How to Build
+=================================
+
+(1) Client
+
+(1.1) Java
+
+To figure out if Java is installed on the user’s computer, the user can go to
+the Command Prompt and type: javac. To launch the Command Prompt, press Win + R
+on the keyboard to open the Run window. In the Run window, on the Open line,
+type: cmd. After typing: javac, if the Command Prompt responds with “ ‘javac’
+is not recognized as an internal or external command”, Java is most likely not
+installed on the computer and a JDK installation will be necessary. The JDK
+version used in the project was the Java SE Development Kit 8u131 and the
+download can be found on https://www.oracle.com/ca-en/java/technologies/javase-
+downloads.html. Once the JDK has been installed, the user will have to build a
+Java path for the computer running the game in the computer’s System variables.
+To set a Java path, open the Run Window and type: control panel. In the Control
+Panel, go to
+
+* System > Advanced system settings > Environment Variables > System
+Variables > Path.
+
+Open Path and input the location of the bin file in the JDK folder. The
+location of the bin file can be copied by going to
+
+* Program Files > Java > jdk > bin.
+
+Press on the Address Bar located on the top of the File Explorer and copy the
+address of the bin file. Paste the copied address into the Path from System
+Variables. 
+
+(1.2) Eclipse
+
+To run and produce the game, version 4.14.0, released in December 2019, of
+Eclipse was utilized which can be downloaded from https://www.eclipse.org/.
+“Eclipse IDE for Java Developers" should be chosen when prompted which
+programming language Eclipse will be used for during the installation.
+Eclipse will require the JDK to be installed prior to running any code.
+
+(1.3) Gimp
+
+Although not mentioned in the User’s Guide, image editing was involved in the
+creation of the game through the graphic editor, Gimp version 2.10.18. Gimp can
+be installed from https://www.gimp.org/.
+
+(1.4) Android Studio
+
+The version of Android Studio used was Android Studio 3.6.3 and Java was the
+primary language for development. Thus, similar to Eclipse, the JDK must be
+installed to run code on Android Studio. The download can be found on https://d
+eveloper.android.com/studio. During the set, when prompted with “Choose
+Components”, install Android Studio and the Android Virtual Device.
+
+(1.5) Assets
+
+(1.5.1) Map/Stage Download
+
+The download for the map can be found on this website: http://www.sonicgalaxy.n
+et/maps-gen-sonic/. The map already comes with units and props added to the
+image. Therefore, they will have to be edited out and replaced to implement
+animations or movements.
+
+(1.5.2) Sonic Sprites
+
+The sprites for Sonic were found on https://mugenarchive.com/. When downloading
+sprites, the file type might be a .rar file. If your computer is unable to open
+.rar files, a file archiver is probably necessary. For this project, 7-Zip was
+used and can be downloaded from https://www.7-zip.org/. After extracting the
+file, the sprites will have to be exported from a DEF file to a standard image
+file type. To convert the file type, you can use Fighter Factory which can be
+downloaded from http://fighterfactory.virtualltek.com/.The version used for the
+project was Fighter Factory 3.0.1. To export the sprites in Fighter Factory, go
+to
+
+* Project > Open > and find the DEF file.
+
+If there are multiple DEF files, open the file with the character name. Once
+opened, go to 
+
+* Sprites > Save Image > Check the “All” button > Ok.
+
+Once saved, the sprites should appear in the folder as individual image files.
+
+(1.5.3) Badnik Sprites
+
+The sprites for Badniks (mobs) were found on https://www.spriters-resource.com/
+as a sprite sheet in a .png format.
+
+(1.5.4) Music
+
+The background music is in a .wav format. All rights are reserved to SEGA.
+
+(1.5.5) Sound Effects
+
+The sound effects were downloaded through http://www.mediafire.com/file/dzcvm3a
+tsbu4kzv/Sonic_1_sound_effects.zip/file.
+
+(2) Server
+
+(2.1) MySQL
+
+(2.1.1) MySQL Workbench
+
+MySQL requires 2 separate installations from https://www.mysql.com/. The first
+installation is the MySQL Community Server. For the project, MySQL Community
+Server version 8.0.19 with “Developers Default” as the setup type provided SQL
+database development. After installing and setting up, there are two possible
+methods to connect to the MySQL databases. The MySQL Workbench is a GUI tool to
+access the databases and the MySQL Command Line Client is a command-line tool.
+Both will require the password thought up during the MySQL set up to connect to
+the database.
+
+(2.1.2) MySQL JDBC
+
+The second installation is the MySQL Java Database Connectivity (JDBC) Driver.
+The version used during the project was Connector/J 8.0.19 labeled as “Platform
+Independent” for its operating system, and the JDBC is used to connect the
+MySQL database to Java programs. Once installed, a .jar file will be created
+and the MySQL database driver must be added to the classpath. This can be done
+by drag-and-dropping the installed .jar file into a premade folder in the Java
+project. In Eclipse, right-click the main folder that contains the .jar file
+and go to
+
+* properties > Java Build Path > Add JARs.
+
+A JAR Selection tab will pop up. Navigate to the .jar file and press “OK”.
+Once complete, press “Apply and Close” on the Properties tab. To process a
+result set from the MySQL database, the program will then have to get a
+connection to the database, create a statement, and execute an SQL query all
+prior to processing the result set.
+
+(2.2) Tomcat Apache
+
+(2.2.1) Tomcat Apache Setup
+
+Tomcat Apache will be used to connect to the Java Servlet. In order to do so,
+Tomcat Apache must be installed onto the computer running the game as well as
+Eclipse. The version used for the project was 8.0.28 and the downloads can be
+found on http://tomcat.apache.org/. During the Apache Tomcat setup, the type of
+installation should be set to “Full” and ensure that the computer’s 8080 HTTP
+Connector Port is free to use. Since the default HTTP Connector Port is set to
+8080 during the setup, if the 8080 port is already occupied by another server,
+the HTTP Connector Port must be set to a different port value. The path of the
+Java Runtime Environment (JRE) must also be given to the Apache Tomcat
+installer. To configure Tomcat Apache to Eclipse,
+
+* launch Eclipse > navigate to the “Windows” tab > click Preferences > Server >
+Runtime Environments > Add, and add the installed version. 
+
+To give Tomcat’s installation directory, the user will have to give the address
+where Apache Tomcat was installed to. Once complete, Tomcat has been
+configured. To start the server from Eclipse, go to 
+
+* Windows > Show View > Server.
+
+This will prompt the “Servers” perspective will appear. Right-click on the
+prospective, choose the version of the server, add any necessary resources, and
+finish. The server will then appear on the “Servers” prospective. Click on the
+server and press the green circle with an arrow point rightward, located at the
+top right of the prospective, to start the server. If a prompt appears stating
+the port of the server is already in use, go to
+
+* the tomcat folder > conf > server.xml and open the .xml file.
+
+The .xml file can also be acquired through the Eclipse Project Explorer. Change
+the necessary ports informed by the prompt and start the server once more in
+the .xml file. The server will now be able to run.
+
+(2.2.2) Dynamic Web Project
+
+To access the web page generated by the server, the user can type
+localhost:8080 into a browser of choice. The web page can further be loaded on
+Eclipse by creating a Dynamic Web Project. Go to
+
+* File > New > Dynamic Web Project and give a name to the project.
+
+Create a package in the src folder in the project and a class inside of the
+package. Right-click on the java class in the Project Explorer and go to 
+
+* Web Services > Create Web Service.
+
+The web service type should be set to “Bottom up Java bean Web Service” and the
+service implementation should be [package name].[class name]. There are 2
+vertical bars located on the left side of the Web Service tab. Both should be
+set its highest. Finally, check the “publish” and “monitor” web service boxes
+and click finish. The web page will now load on Eclipse when the server has
+started. To load the same web page on a web browser, the user will have to type
+localhost:8080/[package name]/[class name].
+
+(3) Server and Client
+
+(3.1) JSON and Gson
+
+JSON (JavaScript Object Notation) is a data format that uses regular, human
+text to store and transmit data objects. Gson is an open-source Java library
+that converts Java objects to JSON. Gson can be installed through http://www.ja
+va2s.com/Code/Jar/g/gson.htm. Find the version of choice and download the .zip
+file. Once extracted, a .jar file will appear. For the project, version
+gson-2.2.2.jar was used.
+
+(3.2) Gson in Eclipse
+
+It is recommended that the .jar file should be installed to the project lib
+folder, making it easier to add the file to Eclipse’s Project Build Path.
+When creating a standard Java project, a lib folder will not automatically be
+created by Eclipse. The programmer then should manually create a lib folder
+within the project. Dynamic Web Projects will be created with a lib folder,
+however. Since Gson is required for both the server and the client, the .jar
+file should be added to the Build Paths of the server and client project
+folder. To add Gson to Eclipse’s Build Path,
+
+* right-click on the Java project folder > Properties > Java Build Path.
+
+If the .jar file is placed in the project lib folder, select Add JARs. If the
+.jar file is located outside of the project workspace, select Add External
+JARs. Navigate to
+
+* the gson file > press OK > Apply and Close. 
+
+(3.3) Gson in Android Studio
+
+To add Gson to Android Studio’s Build Path, follow a similar process as
+Eclipse. Add the gson file to the libs folder in the Android Project. Within
+Android Studio's Project Explorer, 
+
+* Right-click on App > Open Module Settings > Add Dependency (+ sign under
+“Declared Dependencies”) > Jar Dependency > select the Gson file for Step 1 >
+select implementation for Step 2 > Press OK > Press OK.
+
+This should be applied to server and client project folders.
+
+====================================
+Programmer's Guide - How to Run/Test
+====================================
+
+(1) Client
+
+(1.1) Computer
+
+As the default, the entire stage of the game will be loaded. However, the
+entire map of the stage is a combination of 9 sections put together. The
+program is designed to load all sections at the beginning of the game.
+However, by splitting the map into smaller portions, the game will only
+update and draw 3 sections at a time to save the computer’s memory. These 3
+sections are the one Sonic is currently on, and the ones right after and
+before the current section. To test specific sections of the map, the arrays
+storing the map image filenames can be altered located in the Stage.java file
+(Workspace > sonic > src > general > Stage.Java). Along with the filename
+array, another array exists in Stage.java to store the starting positions of
+each map section. Each starting position represents the x coordinate of the
+map section images if all sections were to be loaded. In other words, each x
+coordinate is the width of the previous section image. At the top of the
+Main.java file (Workspace > sonic > src > general > Main.java), there are
+global flags that can turn on/off supplementary client features such as sound,
+showing collision detection, and others. To run the code, go to Main.java and
+press the “Run” button.
+
+(1.2) Android
+
+To run the app, Android Studio will need to select an Android device to
+emulate. Go to 
+
+* Tools > AVD Manager > Create Virtual Device > select a device
+and download the Android Google API of choice.
+
+The downloading may take a couple of minutes to complete. To run the code, go
+to the MainActivity.java file and press the “Run App” button.
+
+(2) Server
+
+Similar to client features, within the Main.java file, global booleans can be
+found that can turn on/off server features if wanted by the user. Each of the
+server elements can be accessed as mentioned from the “How to Play” section of
+the User’s Guide. However, if the user would like to run a server feature, then
+the login panel is required to be turned on. This is a result of the login
+panel managing the user ID of each player on the server. Therefore, if a player
+does not log in through the login panel with their user ID, all the other
+server properties will not have a user ID to use if they need one. Before
+playing the game, the program will need to connect to the Java Servlet hosted
+by Apache Tomcat. First, run the SonicServer.java file (Workspace >
+SonicServer > src > SonicServer > SonicServer.java). Once a web page loads,
+run the Main.java file. Running Main.java file will invoke the login panel to
+appear.
+
+============================
+Additional - Existing Issues
+============================
+
+(1) Ghost Recon
+
+Although coded to avoid teleporting, Ghost Recon will occasionally appear to
+stop working and allow images of other players to teleport instead of smoothly
+recovering after being hit from a lag spike. Since the code for server
+functionalities have not been fully optimized to save space wherever possible,
+this issue of teleportation is likely due to lack of memory. As the focus of
+this project is not program optimization, this issue will not be handled for
+the meanwhile.
+
+================
+Revision History
+================
+
+* 2020-03-17  06:06 PM    <DIR>          workspace_spike_collision_detection
+* 2020-03-10  09:31 PM    <DIR>          workspace_ver0001_rpg_ported_and_sonic_framework
+* 2020-03-10  09:59 PM    <DIR>          workspace_ver0002_2d_framework
+* 2020-03-12  06:28 PM    <DIR>          workspace_ver0003_stack
+* 2020-03-12  08:02 PM    <DIR>          workspace_ver0004_space_invaders
+* 2020-03-15  09:43 PM    <DIR>          workspace_ver0005_basic_sonic_framework
+* 2020-03-15  10:01 PM    <DIR>          workspace_ver0006_image
+* 2020-03-17  04:12 PM    <DIR>          workspace_ver0007_keyboard_input_class
+* 2020-03-18  02:04 AM    <DIR>          workspace_ver0008_spike_collision_and_platform_start
+* 2020-04-01  05:04 PM    <DIR>          workspace_ver0009_sonic_start
+* 2020-04-01  10:01 PM    <DIR>          workspace_ver0010_basic_movement_and_camera
+* 2020-04-02  04:01 PM    <DIR>          workspace_ver0011_first_platform
+* 2020-04-02  08:30 PM    <DIR>          workspace_ver0012_layers
+* 2020-04-03  04:31 PM    <DIR>          workspace_ver0013_clean_up
+* 2020-04-03  05:03 PM    <DIR>          workspace_ver0014_first_platform
+* 2020-04-04  09:21 PM    <DIR>          workspace_ver0015_map_section_2
+* 2020-04-04  10:23 PM    <DIR>          workspace_ver0016_fixed_camera
+* 2020-04-04  10:50 PM    <DIR>          workspace_ver0017_section_one
+* 2020-04-05  07:44 PM    <DIR>          workspace_ver0018_section_two_start
+* 2020-04-05  10:06 PM    <DIR>          workspace_ver0019_map_display_queue
+* 2020-04-06  03:34 PM    <DIR>          workspace_ver0020_collision_detection
+* 2020-04-06  03:57 PM    <DIR>          workspace_ver0021_fixed_camera_and_map_width
+* 2020-04-06  07:21 PM    <DIR>          workspace_ver0022_bezier_curve
+* 2020-04-06  09:59 PM    <DIR>          workspace_ver0023_decline
+* 2020-04-06  10:28 PM    <DIR>          workspace_ver0024_debugged_incline
+* 2020-04-06  11:54 PM    <DIR>          workspace_ver0025_bezier_start
+* 2020-04-07  03:14 PM    <DIR>          workspace_ver0026_fixed_flat_platform_detect
+* 2020-04-07  06:04 PM    <DIR>          workspace_ver0027_section_two
+* 2020-04-07  10:04 PM    <DIR>          workspace_ver0028_section_one_redo_start
+* 2020-04-08  09:37 PM    <DIR>          workspace_ver0030_merged_two_sections
+* 2020-04-08  11:53 PM    <DIR>          workspace_ver0031_bug_fixing_start
+* 2020-04-09  03:45 PM    <DIR>          workspace_ver0032_section_three
+* 2020-04-09  05:03 PM    <DIR>          workspace_ver0033_slightly_debugged
+* 2020-04-09  06:32 PM    <DIR>          workspace_ver0034_spawning_platform_fixed
+* 2020-04-09  07:12 PM    <DIR>          workspace_ver0035_fixed_barrier
+* 2020-04-09  08:14 PM    <DIR>          workspace_ver0036_multi_map_detect_start
+* 2020-04-10  06:29 PM    <DIR>          workspace_ver0037_barrier_and_incline_detection
+* 2020-04-10  11:50 PM    <DIR>          workspace_ver0038_debugged_large_incline
+* 2020-04-11  06:03 PM    <DIR>          workspace_ver0039_section_four_spring
+* 2020-05-07  07:04 PM    <DIR>          workspace_ver0040_redo_collision_detect
+* 2020-04-11  11:23 PM    <DIR>          workspace_ver0041_broken_incline_and_curve
+* 2020-04-12  07:43 PM    <DIR>          workspace_ver0042_more_collision_detect
+* 2020-04-12  08:56 PM    <DIR>          workspace_ver0043_curve_detection
+* 2020-04-12  10:05 PM    <DIR>          workspace_ver0044_barrier_detection_start
+* 2020-04-13  11:23 AM    <DIR>          workspace_ver0045_barrier_and_curve_detection
+* 2020-04-13  04:13 PM    <DIR>          workspace_ver0046_debugged_issues
+* 2020-04-13  10:40 PM    <DIR>          workspace_ver0047_checkpoint_and_curve
+* 2020-04-14  08:42 PM    <DIR>          workspace_ver0048_incline_collision_change
+* 2020-04-14  09:38 PM    <DIR>          workspace_ver0049_animation
+* 2020-04-14  10:03 PM    <DIR>          workspace_ver0050_image_rotation
+* 2020-04-16  12:03 AM    <DIR>          workspace_ver0051_loop_01
+* 2020-04-16  03:25 PM    <DIR>          workspace_ver0052_rotation_and_first_detection
+* 2020-04-17  07:05 AM    <DIR>          workspace_ver0053_server
+* 2020-04-17  10:52 AM    <DIR>          workspace_ver0054_overpass_and_physiscs_start
+* 2020-04-17  05:01 PM    <DIR>          workspace_ver0055_loop_debugging
+* 2020-04-17  05:38 PM    <DIR>          workspace_ver0056_one_way_barrier
+* 2020-04-17  06:28 PM    <DIR>          workspace_ver0057_loop_jump_through_barrier
+* 2020-04-18  08:06 PM    <DIR>          workspace_ver0058_constant_speed_s_curve
+* 2020-04-18  09:59 PM    <DIR>          workspace_ver0059_s_curve_accel_and_debugging
+* 2020-04-19  01:50 PM    <DIR>          workspace_ver0060_section_8
+* 2020-04-21  08:49 PM    <DIR>          workspace_ver0061_section_9
+* 2020-04-19  10:07 PM    <DIR>          workspace_ver0062_s_curve_redo_start
+* 2020-04-20  02:32 PM    <DIR>          workspace_ver0063_s_curve_redo_constant_x_speed
+* 2020-04-20  04:54 PM    <DIR>          workspace_ver0064_debug_checkpoint
+* 2020-04-20  06:02 PM    <DIR>          workspace_ver0065_s_curve_accel
+* 2020-04-20  07:58 PM    <DIR>          workspace_ver0067_ceiling_collision_and_jumping_through_barriers
+* 2020-04-20  09:26 PM    <DIR>          workspace_ver0068_debugged_barrier_and_incline
+* 2020-04-20  10:10 PM    <DIR>          workspace_ver0069_rect_color_detect_clean_up
+* 2020-04-20  11:35 PM    <DIR>          workspace_ver0070_horz_moving_rect
+* 2020-04-21  02:35 PM    <DIR>          workspace_ver0071_vert_moving_rect
+* 2020-04-21  02:51 PM    <DIR>          workspace_ver0072_loop_and_rect_fixes
+* 2020-04-21  04:27 PM    <DIR>          workspace_ver0073_curve_take_off
+* 2020-04-21  07:13 PM    <DIR>          workspace_ver0074_hud
+* 2020-04-21  09:03 PM    <DIR>          workspace_ver0075_server_setup_fixed
+* 2020-04-21  10:02 PM    <DIR>          workspace_ver0076_server_start
+* 2020-04-22  04:10 PM    <DIR>          workspace_ver0077_jump_animation
+* 2020-04-22  08:01 PM    <DIR>          workspace_ver0078_idle_spring_ball
+* 2020-04-22  11:02 PM    <DIR>          workspace_ver0079_ball_barrier_walk_damage
+* 2020-04-22  11:40 PM    <DIR>          workspace_ver0080_curve_angle_rotation
+* 2020-04-23  06:13 PM    <DIR>          workspace_ver0081_rings
+* 2020-04-23  09:30 PM    <DIR>          workspace_ver0082_login_panel_start_and_image_xDir
+* 2020-04-23  10:05 PM    <DIR>          workspace_ver0083_protocols
+* 2020-04-24  06:23 PM    <DIR>          workspace_ver0084_menu_and_title_start
+* 2020-04-24  08:12 PM    <DIR>          workspace_ver0085_fade_start
+* 2020-04-24  11:31 PM    <DIR>          workspace_ver0086_title_screen
+* 2020-04-24  11:58 PM    <DIR>          workspace_ver0089_small_fixes
+* 2020-04-25  04:38 PM    <DIR>          workspace_ver0090_control_and_death_screen
+* 2020-04-25  05:09 PM    <DIR>          workspace_ver0091_adjusted_camera_and_resized_maps
+* 2020-04-25  05:45 PM    <DIR>          workspace_ver0092_rings_spike_and_ball_changes
+* 2020-04-25  08:01 PM    <DIR>          workspace_ver0093_sound_fx_and_music
+* 2020-04-25  10:40 PM    <DIR>          workspace_ver0094_end_screen_start
+* 2020-04-26  03:10 PM    <DIR>          workspace_ver0095_end_screen
+* 2020-04-26  07:02 PM    <DIR>          workspace_ver0096_debugging
+* 2020-04-26  10:01 PM    <DIR>          workspace_ver0097_login_panel
+* 2020-04-27  10:59 AM    <DIR>          workspace_ver0098_motobug
+* 2020-04-27  06:22 PM    <DIR>          workspace_ver0099_buzzbomber
+* 2020-04-27  06:53 PM    <DIR>          workspace_ver0100_chopper
+* 2020-04-27  09:56 PM    <DIR>          workspace_ver0101_crabmeat
+* 2020-04-27  10:47 PM    <DIR>          workspace_ver0102_possible_loop_fix
+* 2020-04-28  07:12 PM    <DIR>          workspace_ver0103_stage_changer_without_music
+* 2020-04-28  09:23 PM    <DIR>          workspace_ver0104_chat_panel_start
+* 2020-04-28  09:39 PM    <DIR>          workspace_ver0105_chat_panel_new_messages
+* 2020-04-29  11:52 PM    <DIR>          workspace_ver0106_javadoc_comments
+* 2020-04-30  08:42 PM    <DIR>          workspace_ver0107_chat_panel_issue_fixed
+* 2020-04-30  09:09 PM    <DIR>          workspace_ver0108_inv_panel_non_gui
+* 2020-04-30  10:00 PM    <DIR>          workspace_ver0109_gui_start
+* 2020-05-07  09:56 PM    <DIR>          workspace_ver0109_gui_start_original
+* 2020-05-01  09:56 PM    <DIR>          workspace_ver0110_shop_panel_start
+* 2020-05-02  12:09 AM    <DIR>          workspace_ver0111_small_fixes
+* 2020-05-03  12:51 AM    <DIR>          workspace_ver0112_server_commenting
+* 2020-05-03  06:49 PM    <DIR>          workspace_ver0113_shop_panel_attempt_two
+* 2020-05-04  08:44 PM    <DIR>          workspace_ver0114_broken_shop
+* 2020-05-04  10:35 PM    <DIR>          workspace_ver0115_shop_savepoint
+* 2020-05-04  11:05 PM    <DIR>          workspace_ver0116_shop_clean_up_and_commented
+* 2020-05-05  09:15 PM    <DIR>          workspace_ver0117_gui_inventory_start
+* 2020-05-06  10:00 PM    <DIR>          workspace_ver0118_gui_shop_panel
+* 2020-05-07  09:22 PM    <DIR>          workspace_ver0119_shop_inv_colliding_issue
+* 2020-05-08  11:52 PM    <DIR>          workspace_ver0120_gui_sql_shop_panel
+* 2020-05-09  08:16 PM    <DIR>          workspace_ver0121_javadoc_login_chat_tshop_tinventory
+* 2020-05-10  08:48 PM    <DIR>          workspace_ver0122_response_prot_gson_add_item
+* 2020-05-10  09:13 PM    <DIR>          workspace_ver0123_gui_inv_panel_fixed
+* 2020-05-10  09:24 PM    <DIR>          workspace_ver0124_gui_inv_panel_with_mouse
+* 2020-05-11  04:45 PM    <DIR>          workspace_ver0125_added_assets
+* 2020-05-11  06:00 PM    <DIR>          workspace_ver0126_shop_panel_fixed
+* 2020-05-11  06:26 PM    <DIR>          workspace_ver0127_shop_panel_item_shrink
+* 2020-05-11  09:48 PM    <DIR>          workspace_ver0128_javadoc_gui_shop_inv
+* 2020-05-12  12:04 AM    <DIR>          workspace_ver0129_shop_panel_reset
+* 2020-05-12  02:06 PM    <DIR>          workspace_ver0130_failed_item_detection
+* 2020-05-12  03:15 PM    <DIR>          workspace_ver0131_item_features
+* 2020-05-12  04:14 PM    <DIR>          workspace_ver0132_server_clean_up
+* 2020-05-12  09:22 PM    <DIR>          workspace_ver0133_adding_items_to_inv
+* 2020-05-12  10:10 PM    <DIR>          workspace_ver0134_moving_items_start
+* 2020-05-13  11:09 PM    <DIR>          workspace_ver0135_adding_shop_items
+* 2020-05-14  04:40 AM    <DIR>          workspace_ver0136_new_shop_panel_design
+* 2020-05-14  05:51 PM    <DIR>          workspace_ver0137_broken_add_item_inv
+* 2020-05-14  06:42 PM    <DIR>          workspace_ver0138_adding_items_to_inv
+* 2020-05-15  06:03 PM    <DIR>          workspace_ver0139_moving_items_in_inv
+* 2020-05-15  07:25 PM    <DIR>          workspace_ver0140_use_items_and_add_items_to_inv_fixed
+* 2020-05-15  11:58 PM    <DIR>          workspace_ver0141_server_clean_up_start
+* 2020-05-16  06:01 PM    <DIR>          workspace_ver0142_javadoc_and_server_clean_up
+* 2020-05-16  07:43 PM    <DIR>          workspace_ver0143_shop_refill_fix
+* 2020-05-17  08:39 PM    <DIR>          workspace_ver0144_java_reflection_for_items
+* 2020-05-17  09:20 PM    <DIR>          workspace_ver0145_downloaded_items_from_sql
+* 2020-05-18  02:46 PM    <DIR>          workspace_ver0146_item_changes
+* 2020-05-19  06:14 PM    <DIR>          workspace_ver0147_android_start
+* 2020-05-21  04:32 PM    <DIR>          workspace_ver0148_android_changes
+* 2020-05-22  04:29 PM    <DIR>          workspace_ver0149_computer_client_rings_database
+* 2020-05-22  11:01 PM    <DIR>          workspace_ver0150_refill_concurreny
+* 2020-05-23  10:35 PM    <DIR>          workspace_ver0151_android_item_selection_concurrency
+* 2020-05-24  01:04 AM    <DIR>          workspace_ver0152_android_adding_to_shopping_cart
+* 2020-05-24  01:55 AM    <DIR>          workspace_ver0153_android_updating_shopping_cart
+* 2020-05-24  03:46 AM    <DIR>          workspace_ver0154_android_buy_shopping_list
+* 2020-05-24  06:22 PM    <DIR>          workspace_ver0155_clean_up
+* 2020-05-25  11:47 PM    <DIR>          workspace_ver0156_multiplayer_start
+* 2020-05-26  03:47 AM    <DIR>          workspace_ver0157_closing_connections
+* 2020-05-26  05:20 PM    <DIR>          workspace_ver0158_multiplayer_anim_start
+* 2020-05-26  10:17 PM    <DIR>          workspace_ver0159_proper_multiplayer_framework
+* 2020-05-27  04:49 PM    <DIR>          workspace_ver0160_multiplayer_x_dir
+* 2020-05-27  10:20 PM    <DIR>          workspace_ver0161_animation_handler_start
+* 2020-05-28  12:00 AM    <DIR>          workspace_ver0162_sonic_animation_handler_with_bug
+* 2020-05-28  02:33 AM    <DIR>          workspace_ver0163_unit_animation_handler
+* 2020-05-28  03:17 PM    <DIR>          workspace_ver0164_log_out
+* 2020-05-28  06:14 PM    <DIR>          workspace_ver0165_confusing_server_priority_queue
+* 2020-05-28  09:01 PM    <DIR>          workspace_ver0166_animation_issues_fixed
+* 2020-05-28  09:30 PM    <DIR>          workspace_ver0167_ghost_recon_start
+* 2020-05-29  02:44 PM    <DIR>          workspace_ver0168_log_out_queue_start
+* 2020-05-29  03:55 PM    <DIR>          workspace_ver0169_log_out_without_multiplayer_database
+* 2020-05-29  04:25 PM    <DIR>          workspace_ver0170_refactored_user_database_for_log_out
+* 2020-05-29  10:06 PM    <DIR>          workspace_ver0171_image_manager_with_broken_multiplayer
+* 2020-05-29  11:04 PM    <DIR>          workspace_ver0172_multiplayer_animation_issue_fiexed
+* 2020-05-30  02:41 AM    <DIR>          workspace_ver0173_javadoc
+* 2020-05-30  03:25 PM    <DIR>          workspace_ver0174_x_ghost_recon
+* 2020-05-30  08:40 PM    <DIR>          workspace_ver0175_broken_y_ghost_recon
+* 2020-05-30  09:28 PM    <DIR>          workspace_ver0176_slightly_functional_ghost_recon
+* 2020-05-30  11:03 PM    <DIR>          workspace_ver0177_degree_and_name_tags
+* 2020-05-31  10:16 PM    <DIR>          workspace_ver0178_serial_num_and_timestamp
+* 2020-06-01  03:40 PM    <DIR>          workspace_ver0179_ghost_recon_ver_one_with_serial_num_and_timestamp
+* 2020-06-01  05:32 PM    <DIR>          workspace_ver0180_ghost_recon_broken_collision_detection
+* 2020-06-02  02:15 AM    <DIR>          workspace_ver0181_ghost_recon_ver_two_start_and_mysql_change
+* 2020-06-02  02:39 PM    <DIR>          workspace_ver0182_ghost_recon_ver_two_jump_detection
+* 2020-06-02  06:40 PM    <DIR>          workspace_ver0183_incomplete_ghost_recon_ver_two
+* 2020-06-02  09:01 PM    <DIR>          workspace_ver0184_ghost_recon_airborne_case_added
+* 2020-06-03  05:41 PM    <DIR>          workspace_ver0185_ghost_recon_fsm
+* 2020-06-03  11:55 PM    <DIR>          workspace_ver0186_ghost_recon_teleporting_issue_start
+* 2020-06-04  11:47 AM    <DIR>          workspace_ver0187_ghost_recon_jump_fixed_and_x_start
+* 2020-06-04  02:49 PM    <DIR>          workspace_ver0188_ghost_recon_attempt_to_fix_x_teleportation
+* 2020-06-04  05:23 PM    <DIR>          workspace_ver0189_ghost_recon_x_teleport_attempt_two
+* 2020-06-06  11:59 AM    <DIR>          workspace_ver0190_ghost_recon_sender_storing_50_frames
+* 2020-06-06  04:26 PM    <DIR>          workspace_ver0191_50_frames_without_ghost_recon
+* 2020-06-06  05:45 PM    <DIR>          workspace_ver0192_50_frames_ghost_recon_start
+* 2020-06-06  09:15 PM    <DIR>          workspace_ver0193_recovery_jump_start
+* 2020-06-06  10:11 PM    <DIR>          workspace_ver0194_recovery_jump_anim_and_smoother_transition
+* 2020-06-07  04:50 PM    <DIR>          workspace_ver0195_recovering_after_jumping
+* 2020-06-08  03:05 PM    <DIR>          workspace_ver0196_interpolate_x_run_anim_fixed
+* 2020-06-08  04:37 PM    <DIR>          workspace_ver0197_idling_anim_while_jumping_fixed
+* 2020-06-08  06:12 PM    <DIR>          workspace_ver0198_fixed_last_frame_during_lag
+* 2020-06-08  06:41 PM    <DIR>          workspace_ver0199_teleportation_glitches_fixed
+* 2020-06-08  08:43 PM    <DIR>          workspace_ver0200_idling_after_jumping_fix
+* 2020-06-09  11:21 AM    <DIR>          workspace_ver0201_removed_uncessary_variables_from_multiplayerinfo
+* 2020-06-10  05:04 PM    <DIR>          workspace_ver0202_ghost_recon_and_lag_controls_in_menu
+* 2020-06-10  09:34 PM    <DIR>          workspace_ver0203_end_credits_and_fixes
+* 2020-06-10  11:41 PM    <DIR>          workspace_ver0204_documentation
+* 2020-06-11  09:28 PM    <DIR>          workspace_ver0205_camera_fixed
+* 2020-06-12  11:47 PM    <DIR>          workspace_ver0206_javadoc_client_variables
+* 2020-06-13  03:27 PM    <DIR>          workspace_ver0207_javadoc_server
+* 2020-06-18  06:57 PM    <DIR>          workspace_ver0208_custom_sprite_start
+* 2020-07-31  07:29 PM    <DIR>          workspace_ver0209_project_documentation_review
+* 2020-08-22  12:14 AM    <DIR>          workspace_ver0210_project_doc_fix

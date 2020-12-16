@@ -12,6 +12,10 @@ body {
     color: white;
 }
 
+section {
+    margin-bottom: 4rem;
+}
+
 .narrow-section {
     width: 700px;
     max-width: 80vw;
@@ -36,7 +40,6 @@ a:hover {
 }
 
 img {
-    border: 4px solid white;
     border-radius: 20px;
 }
 

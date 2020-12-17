@@ -1,0 +1,223 @@
+﻿                       ===============================
+                       SE 101 Final Report - Team Quba
+                       ===============================
+
+=======================
+Team Members' Full Name
+=======================
+Nigel Qiu
+Wendi Yu
+Bryan Ling
+Daniel Ko
+
+============
+Introduction
+============
+
+The method of approach to our project was to brainstorm multiple ideas, pick an
+idea, and commit to it. Compared to our initial goal, our final product still
+maintained the same idea of having a robotic arm that could play a game of
+Checkers against a human player. However, as we progressed through the design
+and testing phase, we ran into multiple problems. Most notable was the size of
+our board in ratio to the length of the robotic arm. The original board size
+was too large for the robotic arm’s reach. We then had to adjust our method of
+approach to allow for flexibility. One suggested solution was to flip the board
+every time the robotic arm needed to reach the other side. Unfortunately, that
+would have made the software component much more complicated. Therefore, we
+decided to decrease the size of our board and the checker pieces. To summarize,
+we have fully utilized the trial and error approach to continue problem-solving
+until we got a solution to our problem.
+
+===================
+Background Research
+===================
+
+When we decided to tackle a robotic arm, we realized that creating a design
+from scratch would have been too time-consuming. Therefore, we referred to
+EEZYBOTARM MK2’s design to use as our starting point for our hardware.
+
+In terms of the game-logic, we briefly scanned over examples of Checkers on
+GitHub to understand and get a sense of what components to consider when
+programming the rules and strategies. For optimizing techniques, we looked into
+Minimax Pruning to allow the code to run with the shortest runtime possible.
+
+Since computer vision is a fairly well-developed field, we looked into
+available computer vision libraries online. There were many options available,
+but we ended up choosing OpenCV for budgetary reasons. Although its support
+isn’t as extensive as some paid libraries, it was sufficient for the relatively
+basic processing we needed to do. We used user-created tutorials to explore the
+basic functionality of OpenCV, then further researched more advanced topics
+like specific corner detection algorithms or OTSU thresholding online.
+
+The inverse kinematics section of our software stack was actually relatively
+simple, only involving highschool level trigonometry at its core. This is
+because a rotating base and a two segment arm can be easily modeled using
+tangents and utilizing the cosine law. However, communication, both with game
+logic and to the Arduino required external packages. JSON Simple was used to
+read JSON files from game logic and RXTXcomm was used for serial communication
+across the USB port to the Arudino. Reference to the code examples from the
+RXTX wiki was required for that component due to the intuitive nature of the
+external library. Although serial communication is built in on the Arduino
+side, external libraries were required to interface with the motor control
+shield and to enable smoother/faster motion through better stepper drivers.
+This required the Adafruit Motor Shield header and the AccelStepper header
+files. These packages were relatively intuitive and only needed a quick glance
+at the included sample code.
+
+==============
+Implementation
+==============
+
+The first step of implementation was building and assembling the firmware. We
+used a 3D printer at DWE’s Mechanical and Mechatronics Engineering Clinic to
+build pieces of the robot we could not buy online. Once all materials were
+gathered and prepared, we began building the robot by assembling the structure
+itself and wiring all the electrical components. This process required
+soldering and stripping wires to connect the motors, Arduino, and control
+shields. To carry out the software, we used Git to share code between group
+members and programmed all the functionality components with C++ and Python.
+Specifically, game logic and computer vision were written in Python, a higher
+level language, while kinematics was written in Java. The Arduino components
+run on C. We transferred our data across programming languages through JSON
+objects, so that the Arduino computer could read the code. The last step of
+implementation was to integrate the webcam and our robotic arm. We also added
+more code to control the flow sequence of the different program components as
+part of the integration. We ultimately connected our code enough to run the
+entire arm on one laptop.
+
+===========================
+Group Members’ Contribution
+===========================
+
+(1) Nigel Qiu
+
+Nigel worked on the kinematics and motor control portion of the project which
+interprets abstract board game moves into electrical signals to drive the
+stepper motors. The kinematics program reads JSONs of the board moves based on
+board locations, calculates the real axis coordinates, determines the motor
+movements required and transmits them through USB to the Arduino. Information
+transmission was done through the external packages listed above. The
+calculations were relatively simple, comprising of conditional statements and
+basic trigonometric functions. Therefore, also this is technically considered
+inverse kinematics, it is not a generalizable system as the general solution
+for a two segment arm with rotating base is much simpler than arms with greater
+numbers of segments. The Arduino translates the serial string into electrical
+control signals for the three stepper motors in the arm along with the servo
+motor in the claw. This involved basic string translation which passed that
+information into the motor drivers which interpreted and managed the electrical
+signals required to drive the stepper and servo motors. Aside from some of the
+electrical work, which Wendi did, Nigel also supervised, printed, and assembly
+the robotic arm. This involved processing the robotic arm CAD files (known as
+slicing) into G-code which 3D printers could interpret. 3D printing involved
+setting up, supervising and cleaning up the 3D printer for each print. Assembly
+was surprisingly difficult as there were no clear part lists or instructions
+and as such, involved a lot of trial and error. Similarly, tuning the robotic
+arm to reliably pickup, move and deposit pieces was a frustratingly time
+consuming process.
+
+
+(2) Wendi Yu
+
+Wendi implemented the computer vision portion of the project, which analyzed
+images of the checkers board to determine where each piece was, and what moves
+had been taken since the last picture was processed. The program works by
+taking in an image of the board and detecting corners with which it can crop
+and transform the image into a head-on view of only the checkerboard. It then
+filters by RGB values and thresholds the image to detect which pieces are
+where, and pass this information about the board state to game logic.
+Originally, the program was designed to read an unaltered, store-bought
+checkerboard, which was especially challenging for the automatic corner
+detection portion of the software. However, since the size and capacity of the
+robotic arm eventually required that we print our own board and pieces anyway,
+we designed them to be more computer-vision friendly, ie with distinct (if
+non-traditional) colours and clearly defined corners. Wendi also did some of
+the hardware assembly, specifically the soldering, stripping, etc for
+connecting the electronic hardware. 
+
+(3) Bryan Ling and Daniel Ko
+
+Bryan and Daniel were responsible for programming the game-logic for the
+robotic arm and coding a basic AI to determine the ideal move given a board
+state. The goal was to program the robot to win every match by implementing
+game theory logic and strategic algorithms. This included a program that
+calculated the longest chain possible for the robot’s offense, the longest line
+of the defense, crowning pieces to maximize the mobility of a piece, captured
+single pieces, and a system to prioritize all of the mentioned components. This
+was the greatest challenge that was faced when programming game logic since
+there were multiple strategic elements that needed to be considered. Another
+responsibility was to receive the board state from computer vision and
+integrate the computer vision software with robot kinematics in real-time to
+allow the robot to make specific moves that will benefit the robot.
+
+========================
+Final Product Evaluation
+========================
+
+Our Personal Performance Evaluation: 6.75/10
+
+Once each member evaluated the project out 10, we averaged the 4 assessments
+and got a score of 6.75/10. The general consensus was that each individual
+component of kinematics, computer vision, and game logic perfectly functioned
+on its own. However, the integration part was on the more incomplete side. We
+were not fully able to integrate all components together so that the robotic
+arm was able to play a complete game of Checkers against a human player. The
+added complexity from running all the components simultaneously caused the
+small imperfections to accumulate into noticeable flaws. As well, it was
+difficult for the software to compensate for imperfect conditions while playing
+an actual game of checkers, eg. varying lighting or pieces not perfectly placed
+on their grids. 
+
+=================
+Design Trade-offs
+=================
+
+As mentioned previously, the robotic arm was not long enough to reach all
+corners of the Checkers board. The most efficient way to solve this issue was
+to decrease the size of the board and the size of the pieces. Another barricade
+we ran into was to pick up the pieces itself. Since regular Checkers pieces are
+round and thin, it is not a simple task for the robotic hand to pick up the
+pieces. For this reason, we decided to 3D print our own pieces shaped in a way
+to allow the robotic arm to grab the pieces much easier. The new pieces still
+maintain a circular base but are long and rectangular on top. Another issue we
+encountered was that fairly late into the project timeline, our webcam broke.
+The images it produced became fuzzy in certain sections, which posed a serious
+challenge to effective corner detection. To compensate for reduced image
+quality, we made further modifications to the computer vision program, applying
+techniques like Gaussian blurring to aid with image analysis.
+
+===========
+Future Work
+===========
+
+When we first began our project, we started off with multiple great ideas. Some
+were humorous, such as a robot that would scream when it bumped into objects,
+and some were ambitious. In the end, we chose a robotic arm that would play
+Checkers against a human player by itself. After dedicating over 3 months into
+it, the final product of our project is something we are truly proud of.
+However, there are many ways to improve our idea. An obvious one would be to
+design an arm that would be able to play on a larger board since the current
+board is rather small. Another feature we would aim to improve would be the AI
+so that the robotic arm can think and play at a faster rate. We would also
+apply more strategies to the logic of the robot, allowing the robot to play at
+different levels of difficulty. If we ever wanted to branch out of checkers,
+but still wanted to continue with the board game idea, we would program our arm
+to play a game of Chess as well. This would be much more complicated since
+there are more distinct pieces with their own specific moving abilities.
+
+==========
+References
+==========
+
+* EEZYbotARM MK2, http://www.eezyrobots.it/eba_mk2.html.
+* “Minimax Algorithm in Game Theory: Set 4 (Alpha-Beta Pruning).” GeeksforGeeks, 30 Apr. 2019, https://www.geeksforgeeks.org/minimax-algorithm-in-game-theory-set-4-alpha-beta-pruning/.
+* “Build Software Better, Together.” GitHub, https://github.com/topics/checkers-game.
+* “OpenCV Tutorials.” OpenCV, https://docs.opencv.org/master/d9/df8/tutorial_root.html.
+* “Python Tutorials¶.” OpenCV, https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html.
+* “Opencv-Python.” PyPI, https://pypi.org/project/opencv-python/.
+* “Harris Corner Detector.” Wikipedia, Wikimedia Foundation, 25 Nov. 2019, https://en.wikipedia.org/wiki/Harris_Corner_Detector.
+* “How to capture image from webcam on click using OpenCV”, derricw, Stack overflow, 29 Nov. 2019, https://stackoverflow.com/questions/34588464/python-how-to-capture-image-from-webcam-on-click-using-opencv
+* “JSON.simple” Google, Maven Repository, March 2012, https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
+* “(RXTXcomm) Download Distributables.” QBang, 28 June 2013, http://rxtx.qbang.org/wiki/index.php/Download
+* “Two way communication with the serial port.” QBang, 1 February 2008, http://rxtx.qbang.org/wiki/index.php/Two_way_communcation_with_the_serial_port
+* “Adafruit Motor Shield V2.” Adafruit, 9 July 2013, https://learn.adafruit.com/adafruit-motor-shield-v2-for-arduino/overview
+* “AccelStepper.” Mike McCauley, AirSpayce, 28 August 2018, https://www.airspayce.com/mikem/arduino/AccelStepper/

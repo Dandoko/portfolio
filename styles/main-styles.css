@@ -10,6 +10,7 @@ body {
 
     background-color: black;
     color: white;
+    font-family: 'Space Grotesk', sans-serif;
 }
 
 section {
@@ -24,7 +25,7 @@ section {
 }
 
 .wide-section {
-    width: 1400px;
+    width: 1200px;
     max-width: 90vw;
     display: flex;
     flex-direction: column;
@@ -40,7 +41,8 @@ a:hover {
 }
 
 img {
-    border-radius: 20px;
+    border-radius: 5px;
+    border: 2px solid white;
 }
 
 .navbar-container {
@@ -53,5 +55,5 @@ img {
 }
 
 .nav-text {
-    font-size: 25px;
+    font-size: 20px;
 }

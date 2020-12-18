@@ -47,10 +47,9 @@ img {
 
 .navbar-container {
     margin-top: 4rem;
-    padding: 0 5rem;
 }
 
-.col-sm {
+.navbar-container .col-sm {
     margin-bottom: 0.5rem;
 }
 

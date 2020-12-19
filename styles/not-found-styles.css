@@ -1,0 +1,28 @@
+.not-found-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: block;
+}
+
+.error-text {
+    margin-bottom: 1.3rem;
+    font-size: 5rem;
+    color: #e6476d;
+}
+
+.not-found-text {
+    font-size: 2rem;
+}
+
+.mt-4 a {
+    text-decoration: none;
+    display: inline;
+    padding: 0.5rem;
+    border-radius: 20px;
+    color: white;
+    white-space: nowrap;
+    background-color: #e63761;
+}

@@ -65,6 +65,13 @@
     border: none;
 }
 
+@media (min-width: 768px) { 
+    .btm-col-margin {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
 @media (max-width: 768px) { 
     .tall-img {
         height: 35vw;

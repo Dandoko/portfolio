@@ -1,0 +1,92 @@
+                           =======================
+                           MEAN Stack Kanban Board
+                           =======================
+
+===================
+Project Description
+===================
+This project is a Kanban Board built using the MEAN stack. The Kanban Board has
+an authentication process and allows for CRUD operations on tasks and columns.
+The purpose of the project was to learn full-stack development and the MEAN
+stack.
+
+============
+Technologies
+============
+
+(1) Frontend
+
+* Typescript
+* AngularJS 10.0.8
+* HTML
+* SCSS
+
+(2) Backend
+
+* MongoDB 4.4.1
+* Mongoose 5.10.18
+* ExpressJS 4.17.1
+* NodeJS 12.14.1
+
+========
+Features
+========
+
+(1) Frontend
+
+(1.1) Signup Page
+
+The signup page is where a user can create a new account to sign up with. After
+creating an account, the user will be sent to the Kanban Board page. During the
+account creation, the username and password cannot be empty as they both have a
+minimum required length. Invalid inputs will be notified to the user.
+
+(1.2) Login Page
+
+If a user already has an account, the user can enter the Kanban Board platform
+through the login page. The username and password must correspond to each
+other. Invalid inputs will be notified to the user.
+
+(1.3) Kanban Board Page
+
+(1.3.1) Columns
+
+Columns are containers that will store tasks based on the given category. Basic
+CRUD operations can be applied to columns. In this project, columns can be
+created, renamed, moved, and deleted by a user.
+
+(1.3.2) Tasks
+
+Like columns, basic CRUD operations are applicable to tasks. They will be
+created inside of columns and must stay inside of a column at all times.
+Additionally to task creation, tasks can be renamed, completed, moved, and
+deleted.
+
+(2) Backend
+
+(2.1) JWT Authentication
+
+Every time a user performs a CRUD operation on a column or task, the program
+will authenticate the user using JWT. Each user is given an access token when
+logging in. This access token is given a JWT secret key which will authenticate
+the user when necessary.
+
+(2.2) HTTP REST API
+
+All backend operations are performed using an HTTP RESTful structure. All REST
+operations use either Get, Post, Put, or Delete. During the development,
+Postman was implemented to test the REST API.
+
+===========
+Limitations
+===========
+
+(1) Responsiveness
+
+The web application is not designed to be responsive. Overflows may occur.
+
+(2) Cross-Compatibility
+
+The web application utilized only Google Chrome to build the program.
+Therefore, cross-compatibilty issues may arrise when running the application on
+a different web browser.

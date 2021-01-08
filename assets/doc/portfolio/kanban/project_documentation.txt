@@ -5,10 +5,10 @@
 ===================
 Project Description
 ===================
-This project is a Kanban Board built using the MEAN stack. The Kanban Board has
-an authentication process and allows for CRUD operations on tasks and columns.
-The purpose of the project was to learn full-stack development and the MEAN
-stack.
+This project is a Kanban Board, built using the MEAN stack. The Kanban Board
+has an authentication process and allows for CRUD operations on tasks and
+columns. The purpose of the project was to learn full-stack development and the
+MEAN stack.
 
 ============
 Technologies

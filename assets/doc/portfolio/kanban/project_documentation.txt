@@ -17,7 +17,7 @@ Technologies
 (1) Frontend
 
 * Typescript
-* AngularJS 10.0.8
+* Angular 10.0.8
 * HTML
 * SCSS
 
@@ -25,8 +25,8 @@ Technologies
 
 * MongoDB 4.4.1
 * Mongoose 5.10.18
-* ExpressJS 4.17.1
-* NodeJS 12.14.1
+* Express.js 4.17.1
+* Node.js 12.14.1
 
 ========
 Features

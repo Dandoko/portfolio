@@ -17,6 +17,14 @@
     font-size: 22px;
 }
 
+.imagine-link {
+    color: #ff9e9e;
+}
+
+.imagine-link:hover{ 
+    color: #ff9e9e;
+}
+
 .ensightful-link {
     color: #e5aef5;
 }

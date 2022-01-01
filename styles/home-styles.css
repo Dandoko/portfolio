@@ -17,6 +17,14 @@
     font-size: 22px;
 }
 
+.access-link {
+    color: #7aff9e;
+}
+
+.access-link:hover{ 
+    color: #7aff9e;
+}
+
 .imagine-link {
     color: #ff9e9e;
 }

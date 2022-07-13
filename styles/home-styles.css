@@ -17,6 +17,14 @@
     font-size: 22px;
 }
 
+.behaviour-link {
+    color: #75E7FF;
+}
+
+.behaviour-link:hover {
+    color: #75E7FF;
+}
+
 .access-link {
     color: #7aff9e;
 }

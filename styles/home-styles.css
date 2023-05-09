@@ -17,6 +17,14 @@
     font-size: 22px;
 }
 
+.aiarena-link {
+    color: #ffad33;
+}
+
+.aiarena-link:hover {
+    color: #ffad33;
+}
+
 .behaviour-link {
     color: #75E7FF;
 }

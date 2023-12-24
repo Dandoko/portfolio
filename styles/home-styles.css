@@ -17,44 +17,52 @@
     font-size: 22px;
 }
 
+.derivative-link {
+    color: #FFAD33;
+}
+
+.derivative-link:hover {
+    color: #FFAD33;
+}
+
 .aiarena-link {
-    color: #ffad33;
+    color: #90ECFF;
 }
 
 .aiarena-link:hover {
-    color: #ffad33;
+    color: #90ECFF;
 }
 
 .behaviour-link {
-    color: #75E7FF;
+    color: #FF6E6E;
 }
 
 .behaviour-link:hover {
-    color: #75E7FF;
+    color: #FF6E6E;
 }
 
 .access-link {
-    color: #7aff9e;
+    color: #5CBEB5;
 }
 
 .access-link:hover{ 
-    color: #7aff9e;
+    color: #5CBEB5;
 }
 
 .imagine-link {
-    color: #ff9e9e;
+    color: #2547DC;
 }
 
 .imagine-link:hover{ 
-    color: #ff9e9e;
+    color: #2547DC;
 }
 
 .ensightful-link {
-    color: #e5aef5;
+    color: #A24FFE;
 }
 
 .ensightful-link:hover {
-    color: #e5aef5;
+    color: #A24FFE;
 }
 
 .icon-container {
